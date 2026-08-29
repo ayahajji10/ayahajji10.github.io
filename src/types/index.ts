@@ -140,7 +140,7 @@ export interface SoftSkill {
 
 /* ─── LANGUAGES ───────────────────────────────────────────────── */
 
-export type LanguageLevel = 'Native' | 'Fluent' | 'Advanced' | 'Intermediate' | 'Basic';
+export type LanguageLevel = 'Native' | 'Fluent' | 'Advanced' | 'Intermediate' | 'Basic' | 'Maternelle' | 'Courant' | 'Avancé' | 'Moyen' | 'Débutant';
 
 export interface LanguageEntry {
   language: string;
