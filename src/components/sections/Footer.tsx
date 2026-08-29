@@ -7,7 +7,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="footer" aria-label="Site footer">
+    <footer className="footer" aria-label="Pied de page">
       <div className="footer__inner">
 
         {/* ── Brand ── */}
@@ -22,7 +22,7 @@ export default function Footer() {
         </div>
 
         {/* ── Nav links ── */}
-        <nav className="footer__nav" aria-label="Footer navigation">
+        <nav className="footer__nav" aria-label="Navigation du pied de page">
           {navLinks.map((link) => (
             <a key={link.anchor} href={link.anchor} className="footer__nav-link">
               {link.label}
@@ -37,7 +37,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="footer__social-icon"
-            aria-label="LinkedIn profile"
+            aria-label="Profil LinkedIn"
           >
             <TbBrandLinkedin size={20} />
           </a>
@@ -46,14 +46,14 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="footer__social-icon"
-            aria-label="GitHub profile"
+            aria-label="Profil GitHub"
           >
             <TbBrandGithub size={20} />
           </a>
           <a
             href={`mailto:${contact.email}`}
             className="footer__social-icon"
-            aria-label="Send email"
+            aria-label="Envoyer un e-mail"
           >
             <TbMail size={20} />
           </a>
@@ -63,7 +63,7 @@ export default function Footer() {
 
       {/* ── Copyright strip ── */}
       <div className="footer__copy">
-        <p>© {year} {personal.fullName}. Built with React + Framer Motion.</p>
+        <p>© {year} {personal.fullName}. Conçu avec React + Framer Motion.</p>
       </div>
     </footer>
   );

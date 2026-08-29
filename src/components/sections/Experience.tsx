@@ -3,28 +3,28 @@ import { TbCalendar, TbMapPin } from 'react-icons/tb';
 
 import { experience } from '../../data/experience';
 
-/* ─── Company logo imports ──────────────────────────────────── */
+/* ─── Company logo imports (Optional: update or clear paths as needed) ─── */
 import cihLogo from '../../assets/images/logo_cih.png';
-import devaktusLogo from '../../assets/images/DevAktus.png';
-import ucaLogo from '../../assets/images/Cote_Azure.png';
+import leoniLogo from '../../assets/images/logo_leoni.png';
+import marsaLogo from '../../assets/images/logo_marsa.png';
 
 const companyLogo: Record<string, string> = {
   cih: cihLogo,
-  aurora: ucaLogo,
-  devaktus: devaktusLogo,
+  leoni: leoniLogo,
+  marsa: marsaLogo,
 };
 
 /* ─── Company accent colors ────────────────────────────────── */
 const companyColor: Record<string, string> = {
   cih: 'var(--cyan)',
-  aurora: 'var(--gold)',
-  devaktus: 'var(--purple)',
+  leoni: 'var(--purple)',
+  marsa: 'var(--gold)',
 };
 
 /* ─── Type badge config ─────────────────────────────────────── */
 const typeBadge = {
-  professional: { label: 'Professional', color: 'var(--blue)' },
-  internship: { label: 'Internship', color: 'var(--gold)' },
+  professional: { label: 'Professionnel', color: 'var(--blue)' },
+  internship: { label: 'Stage', color: 'var(--gold)' },
 };
 
 /* ─── Framer Motion variants ───────────────────────────────── */
@@ -37,7 +37,7 @@ const sectionVariants = {
 
 export default function Experience() {
   return (
-    <section id="experience" className="experience" aria-label="Professional experience">
+    <section id="experience" className="experience" aria-label="Expérience professionnelle">
 
       {/* ══════════ SECTION HEADER ══════════ */}
       <motion.div
@@ -47,11 +47,11 @@ export default function Experience() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <span className="section-eyebrow">Work History</span>
-        <h2 className="section-title">Professional Experience</h2>
+        <span className="section-eyebrow">Parcours</span>
+        <h2 className="section-title">Expériences Professionnelles</h2>
         <p className="section-subtitle">
-          Hands-on roles where I've applied AI, Data Engineering, and Business Intelligence
-          to build real products and deliver measurable impact.
+          Stages pratiques et projets d'ingénierie où j'ai appliqué l'architecture logicielle, 
+          le développement Full-Stack et l'automatisation RPA pour créer des solutions performantes.
         </p>
       </motion.div>
 

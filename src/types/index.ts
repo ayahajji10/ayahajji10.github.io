@@ -1,3 +1,5 @@
+import type { IconType } from 'react-icons';
+
 /* ═══════════════════════════════════════════════════════════════
    SHARED TYPESCRIPT INTERFACES
    All data shapes live here. Import from this file in data/ files
@@ -192,7 +194,8 @@ export interface Stat {
 }
 
 export interface Principle {
-  icon: string;
+  icon: IconType;
+  iconColor: string;
   label: string;
   description: string;
 }
@@ -203,12 +206,13 @@ export interface VisionStep {
   label: string;
   sub: string;
   status: VisionStatus;
-  icon: string;
+  icon: IconType;
   year?: string;
 }
 
 export interface FrameworkStep {
-  icon: string;
+  icon: IconType;
+  iconColor: string;
   label: string;
   description: string;
 }

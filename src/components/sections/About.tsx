@@ -47,17 +47,17 @@ const fadeRight = {
 /* ─── Vision status helpers ────────────────────────────────── */
 
 const visionStatusConfig: Record<VisionStatus, { label: string; className: string }> = {
-  done: { label: 'Completed', className: 'about__vision-node--done' },
-  current: { label: 'In Progress', className: 'about__vision-node--current' },
-  future: { label: 'Upcoming', className: 'about__vision-node--future' },
-  goal: { label: 'Goal', className: 'about__vision-node--goal' },
+  done: { label: 'Terminé', className: 'about__vision-node--done' },
+  current: { label: 'En cours', className: 'about__vision-node--current' },
+  future: { label: 'À venir', className: 'about__vision-node--future' },
+  goal: { label: 'Objectif', className: 'about__vision-node--goal' },
 };
 
 /* ─── Component ────────────────────────────────────────────── */
 
 export default function About() {
   return (
-    <section id="about" className="about" aria-label="About me">
+    <section id="about" className="about" aria-label="À propos de moi">
 
       {/* ══════════ SECTION HEADER ══════════ */}
       <motion.div
@@ -67,10 +67,10 @@ export default function About() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <span className="section-eyebrow">Get to know me</span>
-        <h2 className="section-title">About Me</h2>
+        <span className="section-eyebrow">Apprenez à me connaître</span>
+        <h2 className="section-title">À propos de moi</h2>
         <p className="section-subtitle">
-          The story behind the data — who I am, how I think, and where I'm going.
+          L'histoire derrière le parcours — qui je suis, comment je pense et où je vais.
         </p>
       </motion.div>
 
@@ -98,11 +98,13 @@ export default function About() {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h3 className="about__framework-title">How I achieve anything</h3>
+          <h3 className="about__framework-title">Comment j'atteins mes objectifs</h3>
           <div className="about__framework-steps">
             {about.achievementFramework.map((step, i) => (
               <div key={step.label} className="about__framework-step">
-                <div className="about__framework-step-icon">{step.icon}</div>
+                <div className="about__framework-step-icon">
+                  <step.icon style={{ color: step.iconColor }} aria-hidden="true" />
+                </div>
                 <div className="about__framework-step-body">
                   <strong>{step.label}</strong>
                   <span>{step.description}</span>
@@ -125,9 +127,9 @@ export default function About() {
         whileInView="show"
         viewport={{ once: true, amount: 0.15 }}
       >
-        <h3 className="about__subsection-title">Core Principles</h3>
+        <h3 className="about__subsection-title">Principes fondamentaux</h3>
         <p className="about__subsection-sub">
-          The values I operate by — in work and in life.
+          Les valeurs qui me guident — au travail comme dans la vie.
         </p>
 
         <motion.div
@@ -143,7 +145,9 @@ export default function About() {
               className="about__principle-card"
               variants={fadeUp}
             >
-              <span className="about__principle-icon" aria-hidden="true">{p.icon}</span>
+              <span className="about__principle-icon" aria-hidden="true">
+                <p.icon style={{ color: p.iconColor }} />
+              </span>
               <strong className="about__principle-label">{p.label}</strong>
               <p className="about__principle-desc">{p.description}</p>
             </motion.div>
@@ -159,14 +163,31 @@ export default function About() {
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
       >
-        <h3 className="about__subsection-title">Long-Term Vision</h3>
+        <h3 className="about__subsection-title">Vision à long terme</h3>
         <p className="about__subsection-sub">
-          A deliberate, decade-long roadmap toward mastery across technology, data, and business.
+          Une feuille de route réfléchie sur dix ans vers la maîtrise de la technologie, des données et du monde des affaires.
         </p>
 
         <div className="about__vision-track">
-          {/* Connecting line */}
-          <div className="about__vision-line" aria-hidden="true" />
+          {/* Connecting line — progress derived from data, not hardcoded */}
+          <div
+            className="about__vision-line"
+            aria-hidden="true"
+            style={{
+              ['--vision-progress' as any]: `${
+                (() => {
+                  const lastDoneIdx = about.vision.reduce(
+                    (last, s, i) => (s.status === 'done' ? i : last), -1
+                  );
+                  const currentIdx = about.vision.findIndex((s) => s.status === 'current');
+                  // Fill fully through completed steps, then stop halfway
+                  // toward the current step (it isn't finished yet).
+                  const anchor = currentIdx !== -1 ? lastDoneIdx + 0.5 : lastDoneIdx;
+                  return (Math.max(anchor, 0) / (about.vision.length - 1)) * 100;
+                })()
+              }%`,
+            }}
+          />
 
           {about.vision.map((step, i) => {
             const cfg = visionStatusConfig[step.status];
@@ -184,7 +205,9 @@ export default function About() {
                 }}
               >
                 <div className="about__vision-circle">
-                  <span className="about__vision-icon" aria-hidden="true">{step.icon}</span>
+                  <span className="about__vision-icon" aria-hidden="true">
+                    <step.icon />
+                  </span>
                   {step.status === 'current' && (
                     <span className="about__vision-pulse" aria-hidden="true" />
                   )}

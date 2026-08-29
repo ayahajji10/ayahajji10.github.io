@@ -2,7 +2,7 @@
  * MiniMap.tsx
  * A small Leaflet map embedded in Journey cards.
  *
- * Uses CartoDB Dark Matter tiles (free, no API key required).
+ * Uses CartoDB Positron (light) tiles (free, no API key required).
  * Accepts one or more MapLocation pins.
  */
 
@@ -58,9 +58,9 @@ export default function MiniMap({ locations, height = 170 }: MiniMapProps) {
         attributionControl: true,
       });
 
-      // ── CartoDB Dark Matter tiles (free, no API key) ──────────
+      // ── CartoDB Positron tiles — light theme ──────────────────
       L.tileLayer(
-        'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+        'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
         {
           attribution:
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',

@@ -1,5 +1,10 @@
 import { motion } from 'framer-motion';
 import { MdArrowForward, MdFileDownload } from 'react-icons/md';
+import { 
+  TbMapPin, 
+  TbSchool, 
+  TbBuildingBank 
+} from 'react-icons/tb';
 
 import { personal } from '../../data/personal';
 import profileImg from '../../assets/images/profile.png';
@@ -8,21 +13,38 @@ import profileImg from '../../assets/images/profile.png';
 
 const titleDomains = [
   {
-    text:      'Business Intelligence',
-    color:     'var(--gold)',
-    dotColor:  'var(--gold)',
+    text: 'Full-Stack Development',
+    color: 'var(--blue)',
+    dotColor: 'var(--blue)',
   },
   {
-    text:      'Data Engineering',
-    color:     'var(--blue-light)',
-    dotColor:  'var(--blue)',
+    text: 'Cloud & DevOps',
+    color: '#14B8A6',
+    dotColor: '#14B8A6',
   },
   {
-    text:      'Artificial Intelligence',
-    color:     'var(--purple-light)',
-    dotColor:  'var(--purple)',
+    text: 'Intelligent Systems & AI',
+    color: 'var(--purple)',
+    dotColor: 'var(--purple)',
   },
 ] as const;
+
+/* ─── Highlight Cards Icon Config (No Frame/Background) ────── */
+
+const infoCardIcons: Record<string, { icon: React.ReactNode; color: string }> = {
+  'BASED IN': {
+    icon: <TbMapPin size={22} />,
+    color: '#E11D48', // Vibrant Rose Pin
+  },
+  "CYCLE D'INGÉNIEUR": {
+    icon: <TbSchool size={22} />,
+    color: '#8B5CF6', // Academic Purple Cap
+  },
+  'SPECIALIZATION': {
+    icon: <TbBuildingBank size={22} />,
+    color: '#334155', // Slate University Building
+  },
+};
 
 /* ─── Framer Motion variants ───────────────────────────────── */
 
@@ -119,35 +141,51 @@ export default function Hero() {
             className="hero__cta-primary"
             id="hero-view-projects"
           >
-            View Projects
+            Voir les projets
             <MdArrowForward size={18} aria-hidden="true" />
           </a>
           <a
             href={personal.cvFile}
             target="_blank"
             rel="noopener noreferrer"
-            download="Ahmed_Cherqui_Amine_CV.pdf"
+            download="Aya_Hajji_CV.pdf"
             className="hero__cta-secondary"
             id="hero-download-cv"
           >
             <MdFileDownload size={18} aria-hidden="true" />
-            Download CV
+            Télécharger CV
           </a>
         </motion.div>
 
         {/* Quick-info cards */}
         <motion.div className="hero__info" variants={itemUp}>
-          {personal.heroHighlights.map((card) => (
-            <div key={card.label} className="hero__info-card">
-              <span className="hero__info-icon" aria-hidden="true">
-                {card.icon}
-              </span>
-              <div>
-                <span className="hero__info-label">{card.label}</span>
-                <span className="hero__info-value">{card.value}</span>
+          {personal.heroHighlights.map((card) => {
+            const iconConfig = infoCardIcons[card.label.toUpperCase()] || {
+              icon: <TbMapPin size={22} />,
+              color: 'var(--blue)',
+            };
+
+            return (
+              <div key={card.label} className="hero__info-card">
+                <span 
+                  className="hero__info-icon flex items-center justify-center shrink-0"
+                  style={{ 
+                    color: iconConfig.color,
+                    background: 'transparent',
+                    backgroundColor: 'transparent',
+                    padding: 0,
+                  }}
+                  aria-hidden="true"
+                >
+                  {iconConfig.icon}
+                </span>
+                <div>
+                  <span className="hero__info-label">{card.label}</span>
+                  <span className="hero__info-value">{card.value}</span>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </motion.div>
 
       </motion.div>

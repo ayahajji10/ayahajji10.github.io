@@ -7,11 +7,19 @@
 :root {
 
   /* ─── BACKGROUNDS ─────────────────────────────────────────── */
-  --bg-deep:          #060b16;   /* deepest layer (body) */
-  --bg-base:          #080d1a;   /* main background */
-  --bg-surface:       #0f1828;   /* card / section surface */
-  --bg-elevated:      #172033;   /* elevated card, tooltip */
-  --bg-hover:         #1e2a3f;   /* hover state on cards */
+  --bg-deep:          #ffffff;   /* deepest layer (body) */
+  --bg-base:          #ffffff;   /* main background */
+  --bg-surface:       #f7f4ee;   /* card / section surface */
+  --bg-elevated:      #f0e9dc;   /* elevated card, tooltip */
+  --bg-hover:         #ebe1cd;   /* hover state on cards */
+
+  /* ─── CORE PALETTE — BEIGE & BROWN ─────────────────────────── */
+  --beige:            #d9c7a3;   /* warm sand — navbar / frame */
+  --beige-light:       #ecdfc4;
+  --beige-dark:        #c2ac80;
+  --brown:            #8b6339;   /* camel / tan-brown — frame / accents */
+  --brown-light:       #a67f4f;
+  --brown-dark:        #6b4a29;
 
   /* ─── PRIMARY ACCENT — BLUE (Data Engineering) ────────────── */
   --blue:             #3b82f6;
@@ -24,6 +32,11 @@
   --cyan:             #06b6d4;
   --cyan-light:       #22d3ee;
   --cyan-glow:        rgba(6, 182, 212, 0.2);
+
+  /* ─── MAP ACCENT — GREEN (location pins) ───────────────────── */
+  --green:            #4d8b5f;
+  --green-light:      #6fae80;
+  --green-glow:       rgba(77, 139, 95, 0.28);
 
   /* ─── TERTIARY — GOLD (Business Intelligence) ─────────────── */
   --gold:             #f59e0b;
@@ -46,15 +59,19 @@
   --domain-sw-glow:   var(--cyan-glow);
 
   /* ─── TEXT ────────────────────────────────────────────────── */
-  --text-primary:     #f1f5f9;
-  --text-secondary:   #94a3b8;
-  --text-muted:       #64748b;
+  --text-primary:     #2b2420;
+  --text-secondary:   #6b5d4f;
+  --text-muted:       #948572;
 
   /* ─── BORDERS & GLASSMORPHISM ─────────────────────────────── */
-  --border:           rgba(255, 255, 255, 0.06);
-  --border-hover:     rgba(59, 130, 246, 0.35);
-  --glass-bg:         rgba(255, 255, 255, 0.03);
-  --glass-bg-hover:   rgba(255, 255, 255, 0.055);
+  --border:           rgba(139, 99, 57, 0.14);
+  --border-hover:     rgba(139, 99, 57, 0.4);
+  --glass-bg:         rgba(139, 99, 57, 0.045);
+  --glass-bg-hover:   rgba(139, 99, 57, 0.09);
+
+  /* ─── NAVBAR GLASSMORPHISM (beige) ─────────────────────────── */
+  --navbar-glass-bg:   rgba(217, 199, 163, 0.55);
+  --navbar-glass-border: rgba(139, 99, 57, 0.18);
 
   /* ─── TYPOGRAPHY ──────────────────────────────────────────── */
   --font-heading:     'Space Grotesk', sans-serif;
@@ -75,11 +92,11 @@
   --radius-pill:      999px;
 
   /* ─── SHADOWS ─────────────────────────────────────────────── */
-  --shadow-sm:        0 2px 8px  rgba(0, 0, 0, 0.3);
-  --shadow-md:        0 8px 30px rgba(0, 0, 0, 0.4);
-  --shadow-lg:        0 20px 60px rgba(0, 0, 0, 0.5);
-  --shadow-blue:      0 8px 30px rgba(59, 130, 246, 0.3);
-  --shadow-blue-lg:   0 16px 50px rgba(59, 130, 246, 0.45);
+  --shadow-sm:        0 2px 8px  rgba(107, 74, 41, 0.10);
+  --shadow-md:        0 8px 30px rgba(107, 74, 41, 0.14);
+  --shadow-lg:        0 20px 60px rgba(107, 74, 41, 0.18);
+  --shadow-blue:      0 8px 30px rgba(139, 99, 57, 0.25);
+  --shadow-blue-lg:   0 16px 50px rgba(139, 99, 57, 0.35);
 
   /* ─── TRANSITIONS ─────────────────────────────────────────── */
   --ease-fast:        0.15s ease;

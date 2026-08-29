@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import {
-  TbBrandLinkedin, TbBrandGithub, TbMail, TbMailForward,
-  TbMapPin, TbArrowRight,
+  TbBrandLinkedin, TbBrandGithub, TbMail,
+  TbMapPin, TbArrowRight, TbPhone,
 } from 'react-icons/tb';
 
 import { contact } from '../../data/contact';
@@ -24,9 +24,9 @@ const cards: ContactCard[] = [
     id:       'linkedin',
     icon:     <TbBrandLinkedin size={26} />,
     label:    'LinkedIn',
-    value:    'ahmed-amine-cherqui',
+    value:    'aya-hajji',
     href:     contact.linkedin,
-    cta:      'Connect',
+    cta:      'Se connecter',
     color:    '#0A66C2',
     gradient: 'linear-gradient(135deg, rgba(10,102,194,0.15) 0%, rgba(10,102,194,0.04) 100%)',
   },
@@ -34,31 +34,31 @@ const cards: ContactCard[] = [
     id:       'github',
     icon:     <TbBrandGithub size={26} />,
     label:    'GitHub',
-    value:    'ahmedaminecherqui',
+    value:    'ayahajji10',
     href:     contact.github,
-    cta:      'View Profile',
-    color:    '#e6edf3',
-    gradient: 'linear-gradient(135deg, rgba(230,237,243,0.08) 0%, rgba(230,237,243,0.02) 100%)',
+    cta:      'Voir le profil',
+    color:    '#181717',
+    gradient: 'linear-gradient(135deg, rgba(24,23,23,0.12) 0%, rgba(24,23,23,0.03) 100%)',
   },
   {
     id:       'email-main',
     icon:     <TbMail size={26} />,
-    label:    'Primary Email',
+    label:    'E-mail principal',
     value:    contact.email,
     href:     `mailto:${contact.email}`,
-    cta:      'Send Email',
+    cta:      'Envoyer un e-mail',
     color:    'hsl(262 80% 70%)',
     gradient: 'linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(139,92,246,0.04) 100%)',
   },
   {
-    id:       'email-sec',
-    icon:     <TbMailForward size={26} />,
-    label:    'Secondary Email',
-    value:    contact.emailSecondary ?? '',
-    href:     `mailto:${contact.emailSecondary}`,
-    cta:      'Send Email',
-    color:    'var(--cyan)',
-    gradient: 'linear-gradient(135deg, rgba(6,182,212,0.12) 0%, rgba(6,182,212,0.03) 100%)',
+    id:       'phone',
+    icon:     <TbPhone size={26} />,
+    label:    'Téléphone / WhatsApp',
+    value:    contact.phone || '+212 6 12 42 07 71',
+    href:     `tel:${(contact.phone || '+212612420771').replace(/\s+/g, '')}`,
+    cta:      'Appeler / Envoyer un message',
+    color:    '#25D366',
+    gradient: 'linear-gradient(135deg, rgba(37,211,102,0.15) 0%, rgba(37,211,102,0.04) 100%)',
   },
 ];
 
@@ -81,7 +81,7 @@ const cardVariants = {
 
 export default function Contact() {
   return (
-    <section id="contact" className="contact" aria-label="Contact and social links">
+    <section id="contact" className="contact" aria-label="Contact et liens sociaux">
 
       {/* ══════════ AVAILABILITY BADGE ══════════ */}
       <motion.div
@@ -105,10 +105,10 @@ export default function Contact() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <h2 className="section-title">Let's Connect</h2>
+        <h2 className="section-title">Prenons contact</h2>
         <p className="section-subtitle">
-          Whether you have a project, an opportunity, or just want to say hi —
-          I'd love to hear from you.
+          Que vous ayez un projet, une opportunité ou simplement l'envie de dire bonjour —
+          je serais ravie d'échanger avec vous.
         </p>
       </motion.div>
 
@@ -130,8 +130,8 @@ export default function Contact() {
           <motion.a
             key={card.id}
             href={card.href}
-            target={card.href.startsWith('mailto') ? undefined : '_blank'}
-            rel={card.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+            target={card.href.startsWith('mailto') || card.href.startsWith('tel') ? undefined : '_blank'}
+            rel={card.href.startsWith('mailto') || card.href.startsWith('tel') ? undefined : 'noopener noreferrer'}
             className="contact-card"
             style={{
               '--card-color':    card.color,
@@ -142,7 +142,7 @@ export default function Contact() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
-            aria-label={`${card.label}: ${card.value}`}
+            aria-label={`${card.label} : ${card.value}`}
           >
             {/* Background gradient fill */}
             <span className="contact-card__bg" aria-hidden="true" />

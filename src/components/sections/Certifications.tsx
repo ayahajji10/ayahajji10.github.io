@@ -19,13 +19,11 @@ interface Filter {
 }
 
 const FILTERS: Filter[] = [
-  { id: 'all',            label: 'All',            match: () => true },
-  { id: 'bi',            label: 'BI & Analytics',  match: (c) => c.category === 'bi'           },
-  { id: 'ai',            label: 'AI & ML',         match: (c) => c.category === 'ai'           },
-  { id: 'data-science',  label: 'Data & Python',   match: (c) => c.category === 'data-science' },
-  { id: 'web-dev',       label: 'Web Dev',         match: (c) => c.category === 'web-dev'      },
-  { id: 'infrastructure',label: 'Infrastructure',  match: (c) => c.category === 'infrastructure'},
-  { id: 'soft-skills',   label: 'Personal Dev',    match: (c) => c.category === 'soft-skills'  },
+  { id: 'all',            label: 'Tous',                  match: () => true },
+  { id: 'ai-data',        label: 'IA & Data Science',     match: (c) => c.category === 'ai' || c.category === 'data-science' },
+  { id: 'web-dev',        label: 'Développement Web',     match: (c) => c.category === 'web-dev'      },
+  { id: 'infrastructure', label: 'Infrastructure',        match: (c) => c.category === 'infrastructure'},
+  { id: 'soft-skills',    label: 'Développement Perso',   match: (c) => c.category === 'soft-skills'  },
 ];
 
 /* ─── Category accent colors ────────────────────────────────── */
@@ -33,7 +31,7 @@ const FILTERS: Filter[] = [
 const catColor: Record<CertCategory, string> = {
   'bi':             'var(--gold)',
   'ai':             'var(--purple)',
-  'data-science':   'var(--cyan)',
+  'data-science':   'var(--purple)',
   'web-dev':        'var(--blue)',
   'infrastructure': 'var(--blue-light)',
   'soft-skills':    'hsl(142 70% 45%)',
@@ -107,7 +105,7 @@ export default function Certifications() {
   }, [previewCert]);
 
   return (
-    <section id="certifications" className="certifications" aria-label="Certifications and credentials">
+    <section id="certifications" className="certifications" aria-label="Certifications et diplômes">
 
       {/* ══════════ SECTION HEADER ══════════ */}
       <motion.div
@@ -117,11 +115,11 @@ export default function Certifications() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <span className="section-eyebrow">Credentials</span>
+        <span className="section-eyebrow">Diplômes & Attestations</span>
         <h2 className="section-title">Certifications</h2>
         <p className="section-subtitle">
-          {certifications.length} verified credentials across Business Intelligence, AI,
-          Data Science, Software Development, and more — all issued via Coursera.
+          {certifications.length} certifications vérifiées en IA, Data Science,
+          Développement Web, Infrastructure et Soft Skills — toutes délivrées via Coursera.
         </p>
       </motion.div>
 
@@ -129,7 +127,7 @@ export default function Certifications() {
       <motion.div
         className="certs__filters"
         role="tablist"
-        aria-label="Filter certifications by category"
+        aria-label="Filtrer les certifications par catégorie"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -155,8 +153,8 @@ export default function Certifications() {
 
       {/* ══════════ RESULTS COUNT ══════════ */}
       <p className="certs__results-label" aria-live="polite">
-        Showing <strong>{filtered.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, filtered.length)}</strong> of{' '}
-        <strong>{filtered.length}</strong> certification{filtered.length !== 1 ? 's' : ''}
+        Affichage de <strong>{filtered.length === 0 ? 0 : (page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, filtered.length)}</strong> sur{' '}
+        <strong>{filtered.length}</strong> certification{filtered.length > 1 ? 's' : ''}
       </p>
 
       {/* ══════════ GRID ══════════ */}
@@ -193,7 +191,7 @@ export default function Certifications() {
                       <TbAward size={16} />
                     </span>
                     {cert.featured && (
-                      <span className="cert-card__star" aria-label="Featured">
+                      <span className="cert-card__star" aria-label="En vedette">
                         <TbStar size={13} />
                       </span>
                     )}
@@ -213,7 +211,7 @@ export default function Certifications() {
                         className="cert-card__verify cert-card__preview-btn"
                         onClick={() => setPreviewCert(cert)}
                       >
-                        Preview <TbFileTypePdf size={12} aria-hidden="true" />
+                        Aperçu <TbFileTypePdf size={12} aria-hidden="true" />
                       </button>
                     )}
                     {cert.credentialUrl && (
@@ -222,9 +220,9 @@ export default function Certifications() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="cert-card__verify"
-                        aria-label={`Verify certificate: ${cert.title}`}
+                        aria-label={`Vérifier le certificat : ${cert.title}`}
                       >
-                        Verify <TbExternalLink size={12} aria-hidden="true" />
+                        Vérifier <TbExternalLink size={12} aria-hidden="true" />
                       </a>
                     )}
                   </div>
@@ -236,7 +234,7 @@ export default function Certifications() {
                     type="button"
                     className="cert-card__thumb"
                     onClick={() => setPreviewCert(cert)}
-                    aria-label={`Preview certificate: ${cert.title}`}
+                    aria-label={`Aperçu du certificat : ${cert.title}`}
                   >
                     <img
                       src={thumbUrl(cert)}
@@ -245,7 +243,7 @@ export default function Certifications() {
                       className="cert-card__thumb-img"
                     />
                     <span className="cert-card__thumb-overlay">
-                      <TbFileTypePdf size={18} /> Preview
+                      <TbFileTypePdf size={18} /> Aperçu
                     </span>
                   </button>
                 )}
@@ -257,13 +255,13 @@ export default function Certifications() {
 
       {/* ══════════ PAGINATION ══════════ */}
       {totalPages > 1 && (
-        <nav className="certs__pager" aria-label="Certifications pagination">
+        <nav className="certs__pager" aria-label="Pagination des certifications">
           <button
             type="button"
             className="certs__pager-btn"
             onClick={() => goToPage(page - 1)}
             disabled={page === 1}
-            aria-label="Previous page"
+            aria-label="Page précédente"
           >
             <TbChevronLeft size={16} />
           </button>
@@ -276,7 +274,7 @@ export default function Certifications() {
                 className={`certs__pager-page${n === page ? ' certs__pager-page--active' : ''}`}
                 onClick={() => goToPage(n)}
                 aria-current={n === page ? 'page' : undefined}
-                aria-label={`Go to page ${n}`}
+                aria-label={`Aller à la page ${n}`}
               >
                 {n}
               </button>
@@ -288,7 +286,7 @@ export default function Certifications() {
             className="certs__pager-btn"
             onClick={() => goToPage(page + 1)}
             disabled={page === totalPages}
-            aria-label="Next page"
+            aria-label="Page suivante"
           >
             <TbChevronRight size={16} />
           </button>
@@ -307,7 +305,7 @@ export default function Certifications() {
             onClick={() => setPreviewCert(null)}
             role="dialog"
             aria-modal="true"
-            aria-label={`Certificate preview: ${previewCert.title}`}
+            aria-label={`Aperçu du certificat : ${previewCert.title}`}
           >
             <motion.div
               className="cert-modal"
@@ -321,14 +319,14 @@ export default function Certifications() {
                 type="button"
                 className="cert-modal__close"
                 onClick={() => setPreviewCert(null)}
-                aria-label="Close preview"
+                aria-label="Fermer l'aperçu"
               >
                 <TbX size={18} />
               </button>
 
               <img
                 src={thumbUrl(previewCert)}
-                alt={`${previewCert.title} certificate preview`}
+                alt={`Aperçu du certificat ${previewCert.title}`}
                 className="cert-modal__img"
               />
 
@@ -344,14 +342,14 @@ export default function Certifications() {
                     rel="noopener noreferrer"
                     className="cert-modal__btn cert-modal__btn--primary"
                   >
-                    Open PDF <TbFileTypePdf size={14} />
+                    Ouvrir le PDF <TbFileTypePdf size={14} />
                   </a>
                   <a
                     href={pdfUrl(previewCert)}
                     download
                     className="cert-modal__btn"
                   >
-                    Download <TbDownload size={14} />
+                    Télécharger <TbDownload size={14} />
                   </a>
                   {previewCert.credentialUrl && (
                     <a
@@ -360,7 +358,7 @@ export default function Certifications() {
                       rel="noopener noreferrer"
                       className="cert-modal__btn"
                     >
-                      Verify <TbExternalLink size={14} />
+                      Vérifier <TbExternalLink size={14} />
                     </a>
                   )}
                 </div>

@@ -113,13 +113,13 @@ export default function Navbar() {
             href={personal.cvFile}
             target="_blank"
             rel="noopener noreferrer"
-            download="Ahmed_Cherqui_Amine_CV.pdf"
+            download="Aya_Haji_CV.pdf"
             className="navbar__cta"
             id="navbar-download-cv"
-            aria-label="Download CV"
+            aria-label="Télécharger CV"
           >
             <MdFileDownload size={17} aria-hidden="true" />
-            Download CV
+            Télécharger CV
           </a>
 
           {/* Hamburger — mobile */}
@@ -203,10 +203,10 @@ export default function Navbar() {
               custom={navLinks.length}
               initial="hidden"
               animate="show"
-              aria-label="Download CV"
+              aria-label="Télécharger CV"
             >
               <MdFileDownload size={18} aria-hidden="true" />
-              Download CV
+              Télécharger CV
             </motion.a>
           </motion.div>
         )}

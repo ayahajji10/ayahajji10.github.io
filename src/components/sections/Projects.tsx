@@ -14,23 +14,20 @@ interface Filter {
 }
 
 const FILTERS: Filter[] = [
-  { id: 'all', label: 'All Projects', match: () => true },
-  { id: 'professional', label: 'Professional', match: (p) => p.type === 'professional' },
-  { id: 'academic', label: 'Academic', match: (p) => p.type === 'academic' },
-  { id: 'ai', label: 'AI', match: (p) => p.tags.includes('ai') },
-  { id: 'bi', label: 'BI', match: (p) => p.tags.includes('bi') },
-  { id: 'data', label: 'Data', match: (p) => p.tags.includes('data') },
-  { id: 'rpa', label: 'RPA', match: (p) => p.tags.includes('rpa') },
+  { id: 'all', label: 'Tous les projets', match: () => true },
+  { id: 'professional', label: 'Professionnels', match: (p) => p.type === 'professional' },
+  { id: 'academic', label: 'Académiques', match: (p) => p.type === 'academic' },
+  { id: 'software', label: 'Software & Web', match: (p) => p.tags.includes('software') },
+  { id: 'ai', label: 'IA & Chatbot', match: (p) => p.tags.includes('ai') },
+  { id: 'rpa', label: 'RPA & Automates', match: (p) => p.tags.includes('rpa') },
 ];
 
 /* ─── Category badge config ─────────────────────────────────── */
 
 const categoryMeta: Record<string, { label: string; color: string }> = {
-  ai: { label: 'Artificial Intelligence', color: 'var(--purple)' },
-  bi: { label: 'Business Intelligence', color: 'var(--gold)' },
-  data: { label: 'Data Engineering', color: 'var(--cyan)' },
-  rpa: { label: 'RPA & Automation', color: 'var(--blue)' },
-  software: { label: 'Software', color: 'var(--blue)' },
+  ai: { label: 'Intelligence Artificielle', color: 'var(--purple)' },
+  rpa: { label: 'RPA & Automatisation', color: 'var(--cyan)' },
+  software: { label: 'Développement Software', color: 'var(--blue)' },
 };
 
 /* ─── Framer variants ───────────────────────────────────────── */
@@ -65,7 +62,7 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="projects" aria-label="Projects portfolio">
+    <section id="projects" className="projects" aria-label="Portfolio de projets">
 
       {/* ══════════ SECTION HEADER ══════════ */}
       <motion.div
@@ -75,11 +72,11 @@ export default function Projects() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <span className="section-eyebrow">What I've Built</span>
-        <h2 className="section-title">Projects</h2>
+        <span className="section-eyebrow">Réalisations</span>
+        <h2 className="section-title">Projets</h2>
         <p className="section-subtitle">
-          A curated portfolio of professional and academic work spanning AI,
-          Business Intelligence, Data Engineering, and RPA.
+          Un aperçu complet de mes projets professionnels en entreprise ainsi que de mes
+          projets académiques développés au cours de mon cursus d'ingénieur.
         </p>
       </motion.div>
 
@@ -87,7 +84,7 @@ export default function Projects() {
       <motion.div
         className="projects__filters"
         role="tablist"
-        aria-label="Filter projects by category"
+        aria-label="Filtrer les projets par catégorie"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
@@ -139,12 +136,12 @@ export default function Projects() {
 
                   <span className={`project-card__type-badge project-card__type-badge--${project.type}`}>
                     {project.type === 'professional'
-                      ? <><TbBriefcase size={12} aria-hidden="true" /> Professional</>
-                      : <><TbSchool size={12} aria-hidden="true" /> Academic</>}
+                      ? <><TbBriefcase size={12} aria-hidden="true" /> Professionnel</>
+                      : <><TbSchool size={12} aria-hidden="true" /> Académique</>}
                   </span>
 
                   {project.featured && (
-                    <span className="project-card__featured-star" aria-label="Featured project">
+                    <span className="project-card__featured-star" aria-label="Projet phare">
                       <TbStar size={15} aria-hidden="true" />
                     </span>
                   )}
@@ -189,7 +186,7 @@ export default function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="project-card__link project-card__link--github"
-                        aria-label={`GitHub repository for ${project.title}`}
+                        aria-label={`Dépôt GitHub pour ${project.title}`}
                       >
                         <TbBrandGithub size={15} aria-hidden="true" />
                         GitHub
@@ -201,10 +198,10 @@ export default function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="project-card__link project-card__link--demo"
-                        aria-label={`Live demo for ${project.title}`}
+                        aria-label={`Démo en ligne pour ${project.title}`}
                       >
                         <TbExternalLink size={14} aria-hidden="true" />
-                        Live Demo
+                        Démo
                       </a>
                     )}
                   </div>
@@ -223,7 +220,7 @@ export default function Projects() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
-          No projects match this filter.
+          Aucun projet ne correspond à ce filtre.
         </motion.p>
       )}
 

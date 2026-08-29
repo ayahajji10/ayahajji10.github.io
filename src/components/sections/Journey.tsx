@@ -4,47 +4,47 @@ import { education } from '../../data/education';
 import type { EducationEntry } from '../../types';
 import MiniMap from '../ui/MiniMap';
 
-/* ─── School logo imports ───────────────────────────────────── */
-import gsbLogo  from '../../assets/images/gsb_logo.png';
-import emsiLogo from '../../assets/images/EMSI.png';
-import ucaLogo  from '../../assets/images/Cote_Azure.png';
-import lyonLogo from '../../assets/images/lyon_logo.png';
+/* ─── Importations des logos d'écoles ───────────────────────── */
+import ziryabLogo from '../../assets/images/ziryab_logo.png';
+import emsiLogo   from '../../assets/images/EMSI.png';
+import ucaLogo    from '../../assets/images/Cote_Azure.png';
+import lyonLogo   from '../../assets/images/lyon_logo.png';
 
 const schoolLogos: Record<string, string[]> = {
-  'bac':                [gsbLogo],
+  'bac':                [ziryabLogo],
   'emsi-prepa':         [emsiLogo],
   'emsi-engineering':   [emsiLogo],
   'uca-double-diploma': [emsiLogo, ucaLogo],
   'lyon1-miage':        [lyonLogo],
 };
 
-/* ─── Type badge config ─────────────────────────────────────── */
+/* ─── Configuration des badges de type ──────────────────────── */
 
 const typeBadge: Record<EducationEntry['type'], { label: string; color: string }> = {
-  bac:           { label: 'Baccalauréat',    color: 'var(--gold)'        },
-  prep:          { label: 'Cycle Prépa',      color: 'var(--cyan)'        },
-  engineering:   { label: 'Diplôme Ingénieur', color: 'var(--blue)'     },
-  'double-diploma': { label: 'Double Diplôme', color: 'var(--purple)'   },
-  master:        { label: 'Master 2',         color: 'var(--cyan)'       },
+  bac:               { label: 'Baccalauréat',       color: 'var(--gold)'   },
+  prep:              { label: 'Cycle Prépa',        color: 'var(--cyan)'   },
+  engineering:       { label: 'Diplôme Ingénieur',  color: 'var(--blue)'   },
+  'double-diploma': { label: 'Double Diplôme',     color: 'var(--purple)' },
+  master:            { label: 'Master 2',           color: 'var(--cyan)'   },
 };
 
-/* ─── Framer Motion variants ───────────────────────────────── */
+/* ─── Variantes Framer Motion ──────────────────────────────── */
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
   show:   { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
-/* ─── Component ────────────────────────────────────────────── */
+/* ─── Composant ────────────────────────────────────────────── */
 
 export default function Journey() {
-  // Reverse so most recent is at top
+  // Inverser pour afficher le plus récent en haut
   const entries = [...education].reverse();
 
   return (
-    <section id="journey" className="journey" aria-label="Education timeline">
+    <section id="journey" className="journey" aria-label="Parcours académique">
 
-      {/* ══════════ SECTION HEADER ══════════ */}
+      {/* ══════════ EN-TÊTE DE LA SECTION ══════════ */}
       <motion.div
         className="section-header"
         variants={sectionVariants}
@@ -52,23 +52,23 @@ export default function Journey() {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <span className="section-eyebrow">Academic Path</span>
-        <h2 className="section-title">The Journey</h2>
+        <span className="section-eyebrow">Parcours Académique</span>
+        <h2 className="section-title">Le Parcours</h2>
         <p className="section-subtitle">
-          From high school in Casablanca to Lyon — a step-by-step ascent
-          through Computer Science, Artificial Intelligence, and Business Intelligence.
+          Du lycée à Casablanca jusqu'à Lyon — une progression étape par étape
+          à travers l'Informatique, l'Intelligence Artificielle et le Business Intelligence.
         </p>
       </motion.div>
 
-      {/* ══════════ TIMELINE ══════════ */}
+      {/* ══════════ CHRONOLOGIE ══════════ */}
       <div className="journey__timeline">
 
-        {/* Central spine */}
+        {/* Axe central */}
         <div className="journey__spine" aria-hidden="true" />
 
         {entries.map((entry, i) => {
           const badge  = typeBadge[entry.type];
-          const isLeft = i % 2 === 0; // alternate sides
+          const isLeft = i % 2 === 0; // Alterner les côtés
 
           return (
             <motion.div
@@ -79,7 +79,7 @@ export default function Journey() {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.65, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
-              {/* ── Node dot on the spine ── */}
+              {/* ── Point sur l'axe central ── */}
               <div
                 className={`journey__dot${entry.isCurrent ? ' journey__dot--current' : ''}`}
                 aria-hidden="true"
@@ -87,10 +87,10 @@ export default function Journey() {
                 {entry.isCurrent && <span className="journey__dot-pulse" />}
               </div>
 
-              {/* ── Card ── */}
+              {/* ── Carte ── */}
               <div className={`journey__card${entry.isCurrent ? ' journey__card--current' : ''}`}>
 
-                {/* Header row */}
+                {/* En-tête de la carte */}
                 <div className="journey__card-header">
                   <span
                     className="journey__badge"
@@ -99,14 +99,14 @@ export default function Journey() {
                     {badge.label}
                   </span>
                   {entry.isCurrent && (
-                    <span className="journey__current-tag">Current</span>
+                    <span className="journey__current-tag">En cours</span>
                   )}
                 </div>
 
-                {/* Degree */}
+                {/* Diplôme */}
                 <h3 className="journey__degree">{entry.degree}</h3>
 
-                {/* Institution name with inline logo(s) */}
+                {/* Nom de l'établissement avec logo(s) intégré(s) */}
                 <p className="journey__institution">
                   {schoolLogos[entry.id]?.map((logo, index) => (
                     <img
@@ -121,7 +121,7 @@ export default function Journey() {
                   {entry.institution}
                 </p>
 
-                {/* Meta row: period + location */}
+                {/* Ligne métadonnées : période + localisation */}
                 <div className="journey__meta">
                   <span className="journey__meta-item">
                     <span aria-hidden="true">📅</span> {entry.period}
@@ -132,7 +132,7 @@ export default function Journey() {
                   </span>
                 </div>
 
-                {/* Highlights */}
+                {/* Points forts / Réalisations */}
                 {entry.highlights && entry.highlights.length > 0 && (
                   <ul className="journey__highlights">
                     {entry.highlights.map((h) => (
@@ -144,7 +144,7 @@ export default function Journey() {
                   </ul>
                 )}
 
-                {/* Mini map */}
+                {/* Mini carte */}
                 {entry.mapLocations && entry.mapLocations.length > 0 && (
                   <MiniMap locations={entry.mapLocations} height={160} />
                 )}

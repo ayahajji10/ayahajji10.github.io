@@ -2,70 +2,77 @@ import type { ExperienceEntry } from '../types';
 
 /**
  * Professional experience — displayed in the Experience section.
- * Data extracted verbatim from CV.
+ * Extracted verbatim from CV.
  * Most recent first.
  */
 export const experience: ExperienceEntry[] = [
   {
     id:          'cih',
-    role:        'RPA & Automation Developer Intern — PFE',
-    company:     'CIH Bank',
+    role:        'Ingénieur Concepteur Développeur Full-Stack & RPA — Stage PFE',
+    company:     'CIH BANK',
     type:        'internship',
-    period:      'February 2026 – July 2026',
-    location:    'Casablanca, Morocco',
+    period:      'Février 2026 – Juillet 2026',
+    location:    'Casablanca, Maroc',
     description:
-      'Graduation internship (PFE) — built SmartRPA, an intelligent document processing platform automating banking form extraction and workflows, orchestrated end-to-end with N8N and a chatbot interface.',
+      'Conception et réalisation d\'une plateforme basée sur une architecture microservices cloud-native pour le traitement automatisé de documents bancaires et l\'orchestration de processus RPA.',
     responsibilities: [
-      'Developed a document processing platform combining OCR, NLP, and validation to automate banking form extraction.',
-      'Designed REST APIs and automated workflows using Python, FastAPI, OCR technologies, and N8N for workflow orchestration.',
+      'Conception et développement d\'une architecture microservices cloud-native avec Spring Boot 3, React, Docker et Kubernetes.',
+      'Création d\'un orchestrateur intelligent pour l\'assignation automatique des tâches aux robots RPA et le traitement des documents bancaires scannés (CIN, RIB, OCR).',
+      'Sécurisation de la plateforme via KeyCloak (OAuth2/OIDC, JWT) en garantissant la conformité RGPD.',
+      'Mise en place de pipelines CI/CD sous GitLab CI/CD (build, test, scan de sécurité).',
     ],
     technologies: [
-      'Python',
-      'FastAPI',
-      'N8N',
-      'OCR',
-      'NLP',
-      'REST API',
-      'Chatbot',
-      'RPA',
-    ],
-  },
-  {
-    id:          'aurora',
-    role:        'AI & Business Intelligence Developer — PFA',
-    company:     'Université Côte d\'Azur (Master 2 MIAGE-IA)',
-    type:        'professional',
-    period:      'February 2026 – June 2026',
-    location:    'Casablanca, Morocco',
-    description:
-      'PFA (end-of-year project) for the UCA Master 2 MIAGE-IA — designed and delivered Aurora, an AI-powered esports analytics platform for Valorant players, including a full business plan.',
-    responsibilities: [
-      'Designed and developed Aurora, an AI-powered esports analytics platform combining performance analysis, interactive dashboards, and personalized recommendations for Valorant players.',
-      'Integrated Business Intelligence dashboards, RAG, and machine learning to transform gameplay data into actionable insights. Delivered a full business plan alongside the technical solution.',
-    ],
-    technologies: ['Python', 'Power BI', 'RAG', 'Machine Learning', 'FastAPI', 'Data Analytics', 'Business Plan'],
-  },
-  {
-    id:          'devaktus',
-    role:        'AI & Data Application Developer',
-    company:     'DevAktus',
-    type:        'internship',
-    period:      'July 2025 – August 2025',
-    location:    'Remote / Morocco',
-    description:
-      'Developed a multimodal AI content moderation platform capable of analyzing text, images, videos, audio, and copyright infringement using advanced AI models.',
-    responsibilities: [
-      'Developed a multimodal AI content moderation platform capable of moderating text, images, videos, audio, and copyright using advanced AI models.',
-      'Designed AI-powered REST APIs with FastAPI, developed the frontend using React, and integrated multiple AI models for intelligent content analysis and automated moderation.',
-    ],
-    technologies: [
-      'FastAPI',
-      'Python',
+      'Spring Boot 3',
       'React',
+      'Docker',
+      'Kubernetes',
+      'RPA',
+      'KeyCloak',
+      'GitLab CI/CD',
+      'OCR',
+    ],
+  },
+  {
+    id:          'leoni',
+    role:        'Développeur Full-Stack — Stage Technique',
+    company:     'LEONI',
+    type:        'internship',
+    period:      'Juillet 2025 – Septembre 2025',
+    location:    'Maroc',
+    description:
+      'Développement d\'une application full-stack pour l\'analyse des besoins métier et la gestion du pointage ainsi que des absences des employés.',
+    responsibilities: [
+      'Analyse des besoins métier et modélisation fonctionnelle pour la gestion du pointage et des absences des employés.',
+      'Développement de l\'API REST back-end avec Node.js et SQLite, incluant la logique métier et la gestion de la persistance.',
+      'Développement de l\'interface utilisateur responsive pour le suivi et la gestion des données d\'absentéisme.',
+    ],
+    technologies: [
+      'Node.js',
+      'SQLite',
       'REST API',
-      'Multimodal AI',
-      'Computer Vision',
-      'NLP',
+      'JavaScript',
+      'HTML/CSS',
+    ],
+  },
+  {
+    id:          'marsa',
+    role:        'Développeur Web — Stage d\'Observation / Application',
+    company:     'Marsa Maroc',
+    type:        'internship',
+    period:      'Juillet 2024 – Août 2024',
+    location:    'Maroc',
+    description:
+      'Analyse fonctionnelle des opérations portuaires et développement d\'une solution backend pour la traçabilité et la gestion du suivi des conteneurs.',
+    responsibilities: [
+      'Analyse des besoins fonctionnels liés à l\'exploitation des terminaux portuaires et des conteneurs.',
+      'Conception, normalisation et validation de la base de données relationnelle sous MySQL (schéma entité-association).',
+      'Développement d\'une API REST robuste avec Django assurant le suivi des conteneurs, la gestion des entrées/sorties et la traçabilité des opérations portuaires.',
+    ],
+    technologies: [
+      'Django',
+      'Python',
+      'MySQL',
+      'REST API',
     ],
   },
 ];

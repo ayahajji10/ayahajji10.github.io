@@ -38,39 +38,90 @@ import powerpointImg    from '../../assets/images/powerpoint_logo.png';
 import canvaImg         from '../../assets/images/canva_logo.png';
 import wordImg          from '../../assets/images/word_logo.png';
 import tableauImg       from '../../assets/images/tableau_logo.png';
+import linuxImg         from '../../assets/images/linux_logo.png';
+import windowsImg       from '../../assets/images/windows_server_logo.png';
+import dnsImg           from '../../assets/images/dns_dhcp_ad_logo.png';
+import vmwareImg        from '../../assets/images/vmware_logo.png';
+import aspImg           from '../../assets/images/asp_net_logo.png';
+import aspmvcImg        from '../../assets/images/asp_net_mvc_logo.png';
+import laravelImg       from '../../assets/images/laravel_logo.png';
+import angularImg       from '../../assets/images/angular_logo.png';
+import bootstrapImg     from '../../assets/images/bootstrap_logo.png';
+import oracleImg        from '../../assets/images/oracle_logo.png';
+import firebaseImg      from '../../assets/images/firebase_logo.png';
+import dockerImg        from '../../assets/images/docker_logo.png';
+import gitImg           from '../../assets/images/git_logo.png';
+import githubImg        from '../../assets/images/github_logo.png';
+import kubernetesImg    from '../../assets/images/kubernetes_logo.png';
+import azuredevopsImg   from '../../assets/images/azure_devops_logo.png';
+import chatbotsImg      from '../../assets/images/chatbots_logo.png';
+import agentsiaImg      from '../../assets/images/agents_ia_logo.png';
+import airbyteImg       from '../../assets/images/airbyte_logo.png';
+import numpyImg         from '../../assets/images/numpy_logo.png';
+import matplotlibImg    from '../../assets/images/matplotlib_logo.png';
+import umlImg           from '../../assets/images/uml_logo.png';
+import agileImg         from '../../assets/images/agile_logo.png';
+import meriseImg        from '../../assets/images/merise_logo.png';
+import patronsconceptionImg from '../../assets/images/patrons_conception_logo.png';
+import solidImg         from '../../assets/images/solid_logo.png';
 
 /* ─── Skill → image map ─────────────────────────────────────── */
 const SKILL_IMAGE: Record<string, string> = {
-  'Python':          pythonImg,
-  'Machine Learning': mlImg,
-  'RAG':             ragImg,
-  'NLP':             nlpImg,
-  'scikit-learn':    sklearnImg,
-  'Pandas':          pandasImg,
-  'Computer Vision': cvImg,
-  'Power BI':        powerBiImg,
-  'Excel':           excelImg,
-  'Power Pivot':     pivotImg,
-  'DAX':             daxImg,
-  'Data Modeling':   dataModelImg,
-  'SQL':             sqlImg,
-  'MySQL':           mysqlImg,
-  'PostgreSQL':      postgresImg,
-  'SQL Server':      sqlServerImg,
-  'SQLite':          sqliteImg,
-  'FastAPI':         fastapiImg,
-  'Flask':           flaskImg,
-  'React':           reactImg,
-  'JavaScript':      jsImg,
-  'Java':            javaImg,
-  'Spring Boot':     springImg,
-  'C#':              cFamilyImg,
-  'N8N':             n8nImg,
-  'PowerPoint':      powerpointImg,
-  'Canva':           canvaImg,
-  'Word':            wordImg,
-  'Tableau':         tableauImg,
-  // Excel already mapped above
+  'Python':                pythonImg,
+  'Machine Learning':      mlImg,
+  'RAG':                   ragImg,
+  'NLP':                   nlpImg,
+  'scikit-learn':          sklearnImg,
+  'Pandas':                pandasImg,
+  'Computer Vision':       cvImg,
+  'Power BI':              powerBiImg,
+  'Excel':                 excelImg,
+  'Power Pivot':           pivotImg,
+  'DAX':                   daxImg,
+  'Data Modeling':         dataModelImg,
+  'SQL':                   sqlImg,
+  'MySQL':                 mysqlImg,
+  'PostgreSQL/PGVector':   postgresImg,
+  'SQL Server':            sqlServerImg,
+  'SQLite':                sqliteImg,
+  'FastAPI':               fastapiImg,
+  'Flask':                 flaskImg,
+  'React':                 reactImg,
+  'JavaScript':            jsImg,
+  'Java':                  javaImg,
+  'Spring Boot':           springImg,
+  'C#':                    cFamilyImg,
+  'n8n':                   n8nImg,
+  'PowerPoint':            powerpointImg,
+  'Canva':                 canvaImg,
+  'Word':                  wordImg,
+  'Tableau':               tableauImg,
+  'Linux (Ubuntu, Kali)':  linuxImg,
+  'Windows Server':        windowsImg,
+  'DNS / DHCP / AD':       dnsImg,
+  'VMware':                vmwareImg,
+  'ASP.NET':               aspImg,
+  '.NET MVC':              aspmvcImg,
+  'Laravel':               laravelImg,
+  'Angular':               angularImg,
+  'Bootstrap':             bootstrapImg,
+  'Firebase':              firebaseImg,
+  'Oracle':                oracleImg,
+  'Docker':                dockerImg,
+  'Git':                   gitImg,
+  'GitHub':                githubImg,
+  'Kubernetes':            kubernetesImg,
+  'Azure DevOps':          azuredevopsImg,
+  'ChatBots':              chatbotsImg,
+  'Agent IA':              agentsiaImg,
+  'Airbyte':               airbyteImg,
+  'NumPy':                 numpyImg,
+  'Matplotlib':            matplotlibImg,
+  'UML':                   umlImg,
+  'Agile (Scrum)':         agileImg,
+  'Merise':                meriseImg,
+  'Patrons de conception': patronsconceptionImg,
+  'Principes SOLID':       solidImg,
 };
 
 /* ─── Icon lookup map ───────────────────────────────────────── */
@@ -105,7 +156,7 @@ import {
 import type { SkillLevel } from '../../types';
 
 /* ─── Tab config ────────────────────────────────────────────── */
-const TABS = ['Technical', 'Soft Skills', 'Languages'] as const;
+const TABS = ['Technique', 'Compétences relationnelles', 'Langues'] as const;
 type Tab = typeof TABS[number];
 
 /* ─── Level helpers ─────────────────────────────────────────── */
@@ -114,7 +165,7 @@ const levelDots: Record<SkillLevel, number> = {
 };
 
 const levelLabel: Record<SkillLevel, string> = {
-  beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced',
+  beginner: 'Débutant', intermediate: 'Intermédiaire', advanced: 'Avancé',
 };
 
 const levelColor: Record<SkillLevel, string> = {
@@ -135,10 +186,10 @@ const itemFade = {
 
 /* ─── Component ────────────────────────────────────────────── */
 export default function Skills() {
-  const [activeTab, setActiveTab] = useState<Tab>('Technical');
+  const [activeTab, setActiveTab] = useState<Tab>('Technique');
 
   return (
-    <section id="skills" className="skills" aria-label="Skills and competencies">
+    <section id="skills" className="skills" aria-label="Compétences et expertises">
 
       {/* ══════════ SECTION HEADER ══════════ */}
       <motion.div
@@ -148,11 +199,11 @@ export default function Skills() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
-        <span className="section-eyebrow">Toolkit</span>
-        <h2 className="section-title">Skills & Competencies</h2>
+        <span className="section-eyebrow">Boîte à outils</span>
+        <h2 className="section-title">Compétences & Expertises</h2>
         <p className="section-subtitle">
-          Technical expertise across AI, Business Intelligence, Data Engineering,
-          and Software Development — complemented by language fluency and soft skills.
+          Expertise technique en IA, Business Intelligence, Ingénierie des données
+          et Développement logiciel — complétée par la maîtrise des langues et des compétences relationnelles.
         </p>
       </motion.div>
 
@@ -160,7 +211,7 @@ export default function Skills() {
       <motion.div
         className="skills__tabs"
         role="tablist"
-        aria-label="Skills categories"
+        aria-label="Catégories de compétences"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -187,7 +238,7 @@ export default function Skills() {
         <AnimatePresence mode="wait">
 
           {/* ─── TECHNICAL ─── */}
-          {activeTab === 'Technical' && (
+          {activeTab === 'Technique' && (
             <motion.div
               key="technical"
               className="skills__technical"
@@ -268,7 +319,7 @@ export default function Skills() {
           )}
 
           {/* ─── SOFT SKILLS ─── */}
-          {activeTab === 'Soft Skills' && (
+          {activeTab === 'Compétences relationnelles' && (
             <motion.div
               key="soft"
               className="skills__soft"
@@ -278,7 +329,7 @@ export default function Skills() {
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
             >
               <div className="skills__soft-group">
-                <h3 className="skills__soft-group-label">Interpersonal Skills</h3>
+                <h3 className="skills__soft-group-label">Compétences interpersonnelles</h3>
                 <div className="skills__soft-grid">
                   {softSkills.map((s) => (
                     <motion.div key={s.label} className="skills__soft-card" variants={itemFade}>
@@ -290,7 +341,7 @@ export default function Skills() {
               </div>
 
               <div className="skills__soft-group">
-                <h3 className="skills__soft-group-label">Office & Tools</h3>
+                <h3 className="skills__soft-group-label">Bureautique & Outils</h3>
                 <div className="skills__skill-list skills__office-list">
                   {officeSkills.map((s) => {
                     const img = SKILL_IMAGE[s.label];
@@ -318,7 +369,7 @@ export default function Skills() {
                         <div className="skill-item__info">
                           <p className="skill-item__name">{s.label}</p>
                           <p className="skill-item__level-label" style={{ fontSize: '11px' }}>
-                            Office Tool
+                            Outil bureautique
                           </p>
                         </div>
                       </motion.div>
@@ -328,7 +379,7 @@ export default function Skills() {
               </div>
 
               <div className="skills__soft-group">
-                <h3 className="skills__soft-group-label">Interests</h3>
+                <h3 className="skills__soft-group-label">Centres d'intérêt</h3>
                 <div className="skills__soft-grid">
                   {interests.map((i) => (
                     <motion.div key={i.label} className="skills__soft-card" variants={itemFade}>
@@ -342,7 +393,7 @@ export default function Skills() {
           )}
 
           {/* ─── LANGUAGES ─── */}
-          {activeTab === 'Languages' && (
+          {activeTab === 'Langues' && (
             <motion.div
               key="languages"
               className="skills__languages"
@@ -360,7 +411,7 @@ export default function Skills() {
                       <p className="skills__lang-level">{lang.level}</p>
                     </div>
                   </div>
-                  <div className="skills__lang-bar-wrap" aria-label={`${lang.proficiency}% proficiency`}>
+                  <div className="skills__lang-bar-wrap" aria-label={`Niveau de maîtrise : ${lang.proficiency}%`}>
                     <div className="skills__lang-bar-track">
                       <motion.div
                         className="skills__lang-bar-fill"
