@@ -113,7 +113,7 @@ export default function Navbar() {
             href={personal.cvFile}
             target="_blank"
             rel="noopener noreferrer"
-            download="Aya_Haji_CV.pdf"
+            download="Aya_Hajji_CV.pdf"
             className="navbar__cta"
             id="navbar-download-cv"
             aria-label="Télécharger CV"
@@ -196,7 +196,7 @@ export default function Navbar() {
               href={personal.cvFile}
               target="_blank"
               rel="noopener noreferrer"
-              download="Ahmed_Cherqui_Amine_CV.pdf"
+              download="Aya_Hajji_CV.pdf"
               className="mobile-menu__cta"
               id="mobile-nav-download-cv"
               variants={linkItemVariants}
